@@ -1,0 +1,2 @@
+# Cette instruction permet d'interdire l'accès à ce dossier aux visiteurs.
+Deny from All
