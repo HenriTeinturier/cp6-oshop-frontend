@@ -42,51 +42,51 @@
         <!-- product-->
         <div class="product col-xl-3 col-lg-4 col-sm-6">
           <div class="product-image">
-            <a href="detail.html" class="product-hover-overlay-link">
-              <img src="images/produits/1-kiss_tn.jpg" alt="product" class="img-fluid">
+            <a href="<?= $absoluteURL ?>/catalogue/produit/12" class="product-hover-overlay-link">
+              <img src="<?= $absoluteURL ?>/assets/images/produits/1-kiss_tn.jpg" alt="product" class="img-fluid">
             </a>
           </div>
           <div class="product-action-buttons">
             <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-            <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+            <a href="<?= $absoluteURL ?>/catalogue/produit/12" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
           </div>
           <div class="py-2">
             <p class="text-muted text-sm mb-1">Chausson</p>
-            <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Kissing</a></h3><span class="text-muted">40€</span>
+            <h3 class="h6 text-uppercase mb-1"><a href="<?= $absoluteURL ?>/catalogue/produit/12" class="text-dark">Kissing</a></h3><span class="text-muted">40€</span>
           </div>
         </div>
         <!-- /product-->
         <!-- product-->
         <div class="product col-xl-3 col-lg-4 col-sm-6">
             <div class="product-image">
-              <a href="detail.html" class="product-hover-overlay-link">
-                <img src="images/produits/2-rose_tn.jpg" alt="product" class="img-fluid">
+              <a href="" class="product-hover-overlay-link">
+                <img src="<?= $absoluteURL ?>/assets/images/produits/2-rose_tn.jpg" alt="product" class="img-fluid">
               </a>
             </div>
             <div class="product-action-buttons">
               <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-              <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+              <a href="" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
             </div>
             <div class="py-2">
               <p class="text-muted text-sm mb-1">Tong</p>
-              <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Pink lady</a></h3><span class="text-muted">20€</span>
+              <h3 class="h6 text-uppercase mb-1"><a href="" class="text-dark">Pink lady</a></h3><span class="text-muted">20€</span>
             </div>
           </div>
           <!-- /product-->
           <!-- product-->
         <div class="product col-xl-3 col-lg-4 col-sm-6">
             <div class="product-image">
-              <a href="detail.html" class="product-hover-overlay-link">
-                <img src="images/produits/3-panda_tn.jpg" alt="product" class="img-fluid">
+              <a href="" class="product-hover-overlay-link">
+                <img src="<?= $absoluteURL ?>/assets/images/produits/3-panda_tn.jpg" alt="product" class="img-fluid">
               </a>
             </div>
             <div class="product-action-buttons">
               <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-              <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+              <a href="" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
             </div>
             <div class="py-2">
               <p class="text-muted text-sm mb-1">Chausson</p>
-              <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Panda</a></h3><span class="text-muted">50€</span>
+              <h3 class="h6 text-uppercase mb-1"><a href="" class="text-dark">Panda</a></h3><span class="text-muted">50€</span>
             </div>
           </div>
           <!-- /product-->
@@ -94,16 +94,16 @@
         <div class="product col-xl-3 col-lg-4 col-sm-6">
             <div class="product-image">
               <a href="detail.html" class="product-hover-overlay-link">
-                <img src="images/produits/20-deadpool_tn.jpg" alt="product" class="img-fluid">
+                <img src="<?= $absoluteURL ?>/assets/images/produits/20-deadpool_tn.jpg" alt="product" class="img-fluid">
               </a>
             </div>
             <div class="product-action-buttons">
               <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-              <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+              <a href="" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
             </div>
             <div class="py-2">
               <p class="text-muted text-sm mb-1">Pantoufle</p>
-              <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark">Deadpool</a></h3><span class="text-muted">15€</span>
+              <h3 class="h6 text-uppercase mb-1"><a href="" class="text-dark">Deadpool</a></h3><span class="text-muted">15€</span>
             </div>
           </div>
           <!-- /product-->

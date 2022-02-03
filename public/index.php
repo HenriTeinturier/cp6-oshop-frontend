@@ -54,11 +54,20 @@ $router->map(
     'page-about'
 );
 
+$router->map(
+    'GET',
+    '/mentions-legales/',
+    [
+        'controller' => 'MainController',
+        'method' => 'mentionsLegalesAction'
+    ],
+    'page-mentions-legales'
+);
 
 $router->map(
     'GET',
     // AltoRouter prévoit des urls avec une partie dynamique. Ici [i:id] veut dire "n'importe quel entier"
-    '/categories/[i:id]',
+    '/catalogue/categorie/[i:id]',
     [
         'controller' => 'CatalogController',
         'method' => 'categoriesAction'
@@ -66,12 +75,44 @@ $router->map(
     'page-category'
 );
 
+$router->map(
+    'GET',
+    // AltoRouter prévoit des urls avec une partie dynamique. Ici [i:id] veut dire "n'importe quel entier"
+    '/catalogue/type/[i:id]',
+    [
+        'controller' => 'CatalogController',
+        'method' => 'typeAction'
+    ],
+    'page-type'
+);
+
+$router->map(
+    'GET',
+    // AltoRouter prévoit des urls avec une partie dynamique. Ici [i:id] veut dire "n'importe quel entier"
+    '/catalogue/marque/[i:id]',
+    [
+        'controller' => 'CatalogController',
+        'method' => 'brandAction'
+    ],
+    'page-marque'
+);
+
+$router->map(
+    'GET',
+    // AltoRouter prévoit des urls avec une partie dynamique. Ici [i:id] veut dire "n'importe quel entier"
+    '/catalogue/produit/[i:id]',
+    [
+        'controller' => 'CatalogController',
+        'method' => 'productAction'
+    ],
+    'page-produit'
+);
 // La méthode match permet à AltoRouter de savoir si la page demandée existe dans la liste des routes
 // $match contient un tableau avec les informations de la route actuelle (controller, méthode, nom, etc)
 // Si la route actuelle n'existe pas, $match contient false
 $match = $router->match();
 
-dump($match);
+
 
 
 // ---- DISPATCHER ----- 
