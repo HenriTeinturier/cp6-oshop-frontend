@@ -8,7 +8,7 @@
       </ol>
       <!-- Hero Content-->
       <div class="hero-content pb-5 text-center">
-        <h1 class="hero-heading">Catégories</h1>
+        <h1 class="hero-heading">Produits rangés dans la catégorie n°<?= $viewData['id'] ?></h1>
         <div class="row">
           <div class="col-xl-8 offset-xl-2">
             <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor

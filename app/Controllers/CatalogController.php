@@ -2,9 +2,15 @@
 
 class CatalogController {
 
-    public function categoriesAction()
+    public function categoriesAction($params)
     {
-        $this->show('categories');
+        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
+        $data = [
+            'id' => $params['id']
+        ];
+        
+
+        $this->show('categories', $data);
     }
 
     /**
