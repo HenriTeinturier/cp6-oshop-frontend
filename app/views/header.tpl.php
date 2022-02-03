@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <title>oShop</title>
 </head>
 
 <body>
-
-<?php 
-echo __DIR__;
-dump($_SERVER);    ?>
   <header>
     <div class="top-bar">
       <div class="container-fluid">

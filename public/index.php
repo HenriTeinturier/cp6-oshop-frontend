@@ -20,7 +20,6 @@ if($pageToDisplay === null) {
 }
 
 
-
 // On utilise la classe AltoRouter pour gérer nos routes. 
 // On doit donc commencer par l'instancier
 
@@ -34,7 +33,7 @@ $router->setBasePath($_SERVER['BASE_URI']);
 // On crée notre routeur dans lequel on fait l'association entre une URL et une méthode d'un controller.
 
 $router->map(
-    'GET',  // Méthode de la requete (get ou post)
+    'GET',  // Méthode HTTP de la requete (get ou post)
     '/',  // url de la route (/ = home)
     // Tableau contenant le controller et la méthode liée à la page
     [    
