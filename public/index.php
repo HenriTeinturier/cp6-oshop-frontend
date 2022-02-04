@@ -10,23 +10,16 @@ require __DIR__ . '/../app/Controllers/CatalogController.php';
 require __DIR__ . '/../app/Models/Product.php';
 
 
-// on recupere le model product
-$productModel = new Product;
-$product = $productModel->find(4);
-dump($product);
 
-
-/* // Pour afficher nos pages, on a besoin de savoir quelle page est demandée. Le nom de la page est transmis dans l'url au sein du paramètre GET page. 
+//! $pageToDisplay n'est plus utilisé, AltoRouter récupère automatiquement le paramètre GET page
+// Pour afficher nos pages, on a besoin de savoir quelle page est demandée. Le nom de la page est transmis dans l'url au sein du paramètre GET page. 
 // Filter_input permet de récupérer ce paramètre. Si le paramètre n'existe pas, filter_input renvoie null, ce qui nous évite des erreurs 
-$pageToDisplay = filter_input(INPUT_GET, 'page');
+// $pageToDisplay = filter_input(INPUT_GET, 'page');
 
- */
-
-
-/* // Si filter_input n'a pas trouvé de paramètre GET page, alors on affiche la page d'accueil
-if($pageToDisplay === null) {
-    $pageToDisplay = 'home';
-} */
+// Si filter_input n'a pas trouvé de paramètre GET page, alors on affiche la page d'accueil
+// if($pageToDisplay === null) {
+//     $pageToDisplay = 'home';
+// }
 
 
 // On utilise la classe AltoRouter pour gérer nos routes. 
@@ -63,15 +56,6 @@ $router->map(
     'page-about'
 );
 
-$router->map(
-    'GET',
-    '/mentions-legales/',
-    [
-        'controller' => 'MainController',
-        'method' => 'mentionsLegalesAction'
-    ],
-    'page-mentions-legales'
-);
 
 $router->map(
     'GET',
@@ -83,6 +67,7 @@ $router->map(
     ],
     'page-category'
 );
+
 
 $router->map(
     'GET',
@@ -103,8 +88,9 @@ $router->map(
         'controller' => 'CatalogController',
         'method' => 'brandAction'
     ],
-    'page-marque'
+    'page-brand'
 );
+
 
 $router->map(
     'GET',
@@ -114,14 +100,27 @@ $router->map(
         'controller' => 'CatalogController',
         'method' => 'productAction'
     ],
-    'page-produit'
+    'page-product'
 );
+
+
+$router->map(
+    'GET',
+    '/mentions-legales',
+    [
+        'controller' => 'MainController',
+        'method' => 'legalMentionsAction'
+    ],
+    'legal-notices'
+);
+
 // La méthode match permet à AltoRouter de savoir si la page demandée existe dans la liste des routes
 // $match contient un tableau avec les informations de la route actuelle (controller, méthode, nom, etc)
 // Si la route actuelle n'existe pas, $match contient false
 $match = $router->match();
 
-
+// Décommenter la ligne suivante pour voir le contenu de $match
+// dump($match);
 
 
 // ---- DISPATCHER ----- 
@@ -139,9 +138,11 @@ if($match !== false) {
     $params = $match['params'];
 
     // On instancie le controller dans lequel est rangé la méthode
+    // Si $controllerToUse contient "MainController", ça revient à écrire "new MainController()"
     $controller = new $controllerToUse();
 
     // On utilise la variable $methodToUse pour exécuter la méthode de controller dont le nom est stocké dedans.
+    // Si  $methodToUse contient "homeAction", c'est comme si on écrivait "$controller->homeAction($params)"
     $controller->$methodToUse($params);
 
 } else {

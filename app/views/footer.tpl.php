@@ -133,10 +133,10 @@
   </footer>
 
   <!-- JS -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/app.js"></script>
+  <script src="<?= $absoluteUrl ?>assets/js/jquery.min.js"></script>
+  <script src="<?= $absoluteUrl ?>assets/js/popper.min.js"></script>
+  <script src="<?= $absoluteUrl ?>assets/js/bootstrap.min.js"></script>
+  <script src="<?= $absoluteUrl ?>assets/js/app.js"></script>
 </body>
 
 </html>

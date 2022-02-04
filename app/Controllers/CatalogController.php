@@ -18,28 +18,40 @@ class CatalogController {
         $this->show('categories', $data);
     }
 
+    /**
+     * Méthode affichant des produits filtrés par type
+     *
+     * @param array $params Doit contenir une entrée ID qui représente l'identifiant du type
+     * @return void
+     */
     public function typeAction($params)
     {
-        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
-        $data = [
-            'id' => $params['id']
-        ];
-
-        $this->show('type', $data);
+        // On appelle la méthode show pour qu'elle affiche la page types en lui passant les paramètres de l'url.
+        $this->show('types', $params);
     }
 
+    /**
+     * Méthode affichant des produits filtrés par marque
+     *
+     * @param array $params Doit contenir une entrée ID qui représente l'identifiant de la marque
+     * @return void
+     */
     public function brandAction($params)
     {
-        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
-        $data = [
-            'id' => $params['id']
-        ];
-
-        $this->show('marque', $data);
+        // On appelle la méthode show pour qu'elle affiche la page des produits filtrés par marque en lui passant les paramètres de l'url.
+        $this->show('brands', $params);
     }
 
+
+    /**
+     * Méthode affichant la page d'un produit
+     *
+     * @param array $params Doit contenir une entrée ID qui représente l'identifiant d'un produit
+     * @return void
+     */
     public function productAction($params)
     {
+
         // On a besoin du produit dont l'ID se trouve dans l'URL.
         $productID = $params['id'];
 
@@ -65,7 +77,9 @@ class CatalogController {
      */
     public function show($viewName, $viewData = [])
     {
-        $absoluteURL = $_SERVER['BASE_URI'];
+        // Sur toutes les pages, on a besoin d'avoir accès à la variable $absoluteUrl. Celle-ci contient le chemin vers le dossier public et permet de générer les liens vers les assets.
+        $absoluteUrl = $_SERVER['BASE_URI'];
+
         require_once __DIR__ . '/../views/header.tpl.php';
         require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
         require_once __DIR__ . '/../views/footer.tpl.php';

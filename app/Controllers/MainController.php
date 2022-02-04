@@ -1,20 +1,30 @@
 <?php
 class MainController {
 
-    
-
+    /**
+     * Méthode qui gère l'affichage de la page d'accueil
+     *
+     * @return void
+     */
     public function homeAction() {
         $this->show('home');
     }
 
+    /**
+     * Méthode qui gère la page "à propos"
+     *
+     * @return void
+     */
     public function aboutAction()
     {
-        $this->show('about');
+        // On n'a pas créé de template pour cette page, pour l'instant on laisse juste un petit message !
+        echo "Page about";
     }
 
-    public function mentionsLegalesAction()
+    public function legalMentionsAction()
     {
-        $this->show('mentionslegales');
+        // On délègue l'affichage de la page à la méthode show
+        $this->show('legalmentions');
     }
 
     /**
@@ -27,7 +37,9 @@ class MainController {
     public function show($viewName, $viewData = [])
     {
         
-        $absoluteURL = $_SERVER['BASE_URI'];
+        // Sur toutes les pages, on a besoin d'avoir accès à la variable $absoluteUrl. Celle-ci contient le chemin vers le dossier public et permet de générer les liens vers les assets.
+        $absoluteUrl = $_SERVER['BASE_URI'];
+
         require_once __DIR__ . '/../views/header.tpl.php';
         require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
         require_once __DIR__ . '/../views/footer.tpl.php';

@@ -1,6 +1,10 @@
-<?php
+<?php 
+
+// Un model est une classe qui sert à représenter une table de la BDD. Ce model Product représente la table "product".
 class Product {
-    
+
+    // Pour chaque colonne de la table "product", on se crée une propriété privée dans le model Product.
+    // On bloque l'accès à ces propriétés depuis l'extérieur de la classe grace au mot-clé private.
     private $id;
     private $name;
     private $description;
@@ -9,13 +13,21 @@ class Product {
     private $rate;
     private $status;
     private $created_at;
-    private $update_at;
-    private $brande_id;
-    private $category_id;
+    private $updated_at;
     private $type_id;
+    private $category_id;
+    private $brand_id;
 
-    // permet de recupérer un produit dans la bdd
-    public function find($id) {
+
+
+    /**
+     * Méthode qui permet de récupérer un produit donné dans la BDD
+     *
+     * @param int $id
+     * @return Product
+     */
+    public function find($id)
+    {
         // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD.
         $pdo = Database::getPDO();
        
@@ -32,13 +44,36 @@ class Product {
         return $product;
     }
 
-    // permet de recupérer l'ensemble de la table
-    public function findAll() {
+    /**
+     * Méthode qui récupère tous les produits de la BDD
+     *
+     * @return Array
+     */
+    public function findAll()
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
 
+        // Je fais ma requete SQL
+        $sql = "SELECT * FROM `product`";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $products = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Product');
+
+        return $products;
     }
 
-
-    public function getId() {
+    /**
+     * Retourne la valeur de l'ID du produit courant
+     *
+     * @return int
+     */
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -49,7 +84,7 @@ class Product {
     {
         return $this->name;
     }
-    
+
     /**
      * Set the value of name
      *
@@ -57,11 +92,13 @@ class Product {
      */ 
     public function setName($name)
     {
-        $this->name = $name;
+        // Si le nom n'est pas vide, on le sauvegarde dans la propriété
+        if($name !== "") {
+            $this->name = $name;
+        }
 
         return $this;
     }
-
 
     /**
      * Get the value of description
@@ -108,7 +145,7 @@ class Product {
      */ 
     public function getPrice()
     {
-        return $this->price;
+        return $this->price  . ' €';
     }
 
     /**
@@ -184,41 +221,41 @@ class Product {
     }
 
     /**
-     * Get the value of update_at
+     * Get the value of updated_at
      */ 
-    public function getUpdate_at()
+    public function getUpdated_at()
     {
-        return $this->update_at;
+        return $this->updated_at;
     }
 
     /**
-     * Set the value of update_at
+     * Set the value of updated_at
      *
      * @return  self
      */ 
-    public function setUpdate_at($update_at)
+    public function setUpdated_at($updated_at)
     {
-        $this->update_at = $update_at;
+        $this->updated_at = $updated_at;
 
         return $this;
     }
 
     /**
-     * Get the value of brande_id
+     * Get the value of type_id
      */ 
-    public function getBrande_id()
+    public function getType_id()
     {
-        return $this->brande_id;
+        return $this->type_id;
     }
 
     /**
-     * Set the value of brande_id
+     * Set the value of type_id
      *
      * @return  self
      */ 
-    public function setBrande_id($brande_id)
+    public function setType_id($type_id)
     {
-        $this->brande_id = $brande_id;
+        $this->type_id = $type_id;
 
         return $this;
     }
@@ -244,25 +281,22 @@ class Product {
     }
 
     /**
-     * Get the value of type_id
+     * Get the value of brand_id
      */ 
-    public function getType_id()
+    public function getBrand_id()
     {
-        return $this->type_id;
+        return $this->brand_id;
     }
 
     /**
-     * Set the value of type_id
+     * Set the value of brand_id
      *
      * @return  self
      */ 
-    public function setType_id($type_id)
+    public function setBrand_id($brand_id)
     {
-        $this->type_id = $type_id;
+        $this->brand_id = $brand_id;
 
         return $this;
     }
-
-
 }
-

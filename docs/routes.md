@@ -4,10 +4,10 @@
 
 | URL | HTTP Method | Controller | Method | Title | Content | Comment |
 |--|--|--|--|--|--|--|
-| `/` | `GET` | `MainController` | `home` | Dans les shoe | 5 categorys | home page |
-| `/mentions-legales` | `GET` | `MainController` | `mentionsLegales` | Mentions légales | Mentions légales | Mentions légales |
+| `/` | `GET` | `MainController` | `homeAction` | Dans les shoe | 5 categories | - |
 | `/about` | `GET` | `MainController` | `aboutAction` | A propos | About our shop| - |
-| `/catalogue/categorie/[i:id]` | `GET` | `CatalogController` | `categoriesAction` | Catégories | page catégory | [id] is an integer |
-| `/catalogue/type/[i:id]` | `GET` | `CatalogController` | `typeAction` | Types | page type | [id] is an integer |
-| `/catalogue/brand/[i:id]` | `GET` | `CatalogController` | `brandAction` | Marques | page Brand | [id] is an integer |
-| `/catalogue/product/[i:id]` | `GET` | `CatalogController` | `productAction` | Produit | page product | [id] is an integer |
+| `/mentions-legales` | `GET` | `MainController` | `legalMentionsAction` | Mention légales | Terms and Conditions | - |
+| `/catalogue/categorie/[id]` | `GET` | `CatalogController` | `categoriesAction` | Produits de la catégorie n°[id] | Products attached to a category | [id] represents the category's id |
+| `/catalogue/type/[id]` | `GET` | `CatalogController` | `typeAction` | Produits du type n°[id] | Products attached to a type | [id] represents the type's id |
+| `/catalogue/marque/[id]` | `GET` | `CatalogController` | `brandAction` | Produits de la marque n°[id] | Products attached to a brand | [id] represents the brand's id |
+| `/catalogue/produit/[id]` | `GET` | `CatalogController` | `productAction` | Nom du produit | Product's details| [id] represents the product's id |
