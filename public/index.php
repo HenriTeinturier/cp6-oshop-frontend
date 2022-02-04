@@ -4,20 +4,29 @@
 // On commence par inclure le fichier autoload.php. Ce fichier se charge d'inclure toutes les classes téléchargées via composer.
 require __DIR__.'/../vendor/autoload.php';
 
+require __DIR__ . '/../app/Utils/Database.php';
 require __DIR__ . '/../app/Controllers/MainController.php';
 require __DIR__ . '/../app/Controllers/CatalogController.php';
+require __DIR__ . '/../app/Models/Product.php';
 
-// Pour afficher nos pages, on a besoin de savoir quelle page est demandée. Le nom de la page est transmis dans l'url au sein du paramètre GET page. 
+
+// on recupere le model product
+$productModel = new Product;
+$product = $productModel->find(4);
+dump($product);
+
+
+/* // Pour afficher nos pages, on a besoin de savoir quelle page est demandée. Le nom de la page est transmis dans l'url au sein du paramètre GET page. 
 // Filter_input permet de récupérer ce paramètre. Si le paramètre n'existe pas, filter_input renvoie null, ce qui nous évite des erreurs 
 $pageToDisplay = filter_input(INPUT_GET, 'page');
 
+ */
 
 
-
-// Si filter_input n'a pas trouvé de paramètre GET page, alors on affiche la page d'accueil
+/* // Si filter_input n'a pas trouvé de paramètre GET page, alors on affiche la page d'accueil
 if($pageToDisplay === null) {
     $pageToDisplay = 'home';
-}
+} */
 
 
 // On utilise la classe AltoRouter pour gérer nos routes. 

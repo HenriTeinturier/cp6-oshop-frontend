@@ -40,12 +40,20 @@ class CatalogController {
 
     public function productAction($params)
     {
-        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
-        $data = [
-            'id' => $params['id']
-        ];
+        // On a besoin du produit dont l'ID se trouve dans l'URL.
+        $productID = $params['id'];
 
-        $this->show('produit', $data);
+        // La fonction qui permet de retrouver un produit est rangée dans le model Product. On commence par l'instancier.
+        $productModel = new Product;
+
+        // On exécute la méthode find qui nous renvoie un produit selon l'ID demandé
+        $product = $productModel->find($productID);
+
+        // On ajoute le produit trouvé au colis de données envoyé à la vue
+        $params['product'] = $product;
+        
+        // On appelle la méthode show pour qu'elle affiche la page d'un produit lui passant les paramètres de l'url.
+        $this->show('product', $params);
     }
 
     /**
