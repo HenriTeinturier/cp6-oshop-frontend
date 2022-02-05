@@ -7,6 +7,7 @@ class MainController {
      * @return void
      */
     public function homeAction() {
+        
         $this->show('home');
     }
 
@@ -25,6 +26,39 @@ class MainController {
     {
         // On délègue l'affichage de la page à la méthode show
         $this->show('legalmentions');
+    }
+
+    public function testAction($params)
+    {
+        $marqueid = 5; // recupere l'id de la marque à afficher
+        $marqueModel = new Brand; // creer une instance de Brand
+        $marque = $marqueModel->find($marqueid); // on execute find pour trouver le produit
+        $params['marque'] = $marque; // on ajoute la marque à notre colis
+
+        $marqueModels = new Brand;
+        $marques = $marqueModels->findAll();
+        $params['marques'] = $marques;
+        
+        $typeid = 5; // recupere l'id de la marque à afficher
+        $typeModel = new Type; // creer une instance de Brand
+        $type = $typeModel->find($typeid); // on execute find pour trouver le produit
+        $params['type'] = $type; // on ajoute la marque à notre colis
+
+        $typeModels = new Type;
+        $types = $typeModels->findAll();
+        $params['types'] = $types;
+
+        $categoryid = 5; // recupere l'id de la marque à afficher
+        $categoryModel = new Category; // creer une instance de Brand
+        $category = $categoryModel->find($categoryid); // on execute find pour trouver le produit
+        $params['category'] = $category; // on ajoute la marque à notre colis
+
+        $categoryModels = new Category;
+        $categorys = $categoryModels->findAll();
+        $params['categorys'] = $categorys;
+        
+        // On délègue l'affichage de la page à la méthode show
+        $this->show('test', $params);
     }
 
     /**
