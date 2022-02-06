@@ -21,12 +21,14 @@
   </section>
 
   <table class="demo">
-	<caption>Tableau 1</caption>
+	
 	<thead>
 	<tr>
 		<th>Marques</th>
 		<th>Types</th>
 		<th>Categories</th>
+    <th>Nom & Prenom category 1</th>
+    <th>NbetIDFromCategory</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -67,6 +69,30 @@
         echo "toutes les categories:<br>";
         foreach ($categorys as $id => $categoryObject):
           echo $categoryObject->getName()."<br>";
+        endforeach;
+      ?>  
+    </td>
+    <td>
+      <?php 
+        
+
+        $productsTri = $viewData['productsTri'];
+        echo "Mega Bonus:tous  nom et prenom de la categorie 1 <br>";
+        foreach ($productsTri as $id => $productsTriObject):
+          echo $productsTriObject->getName()." ".$productsTriObject->getPrice()." ".$productsTriObject->category_name."<br>";
+          
+        endforeach;
+      ?>  
+    </td>
+    <td>
+      <?php 
+        
+
+        $NbetIDFromCategory = $viewData['NbetIDFromCategory'];
+        echo "Mega Bonus 2 : Nbr de produits pôur chaque catégorie<br>";
+        foreach ($NbetIDFromCategory as $id => $NbetIDFromCategoryObject):
+          echo "nb: ".$NbetIDFromCategoryObject->nb." id: ".$NbetIDFromCategoryObject->getId()." categorie: ".$NbetIDFromCategoryObject->category_name."<br>";
+          
         endforeach;
       ?>  
     </td>

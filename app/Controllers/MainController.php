@@ -56,6 +56,15 @@ class MainController {
         $categoryModels = new Category;
         $categorys = $categoryModels->findAll();
         $params['categorys'] = $categorys;
+
+        $productsTriCategoryModels = new Product;
+        $productsTriCategory =  $productsTriCategoryModels->findNamePriceFromCategory(1);
+        $params['productsTri'] = $productsTriCategory;
+
+
+        $productsNbetIDFromCategoryModels = new Product;
+        $productsNbetIDFromCategory = $productsNbetIDFromCategoryModels->findNbetIDFromCategory();
+        $params['NbetIDFromCategory'] = $productsNbetIDFromCategory;
         
         // On délègue l'affichage de la page à la méthode show
         $this->show('test', $params);

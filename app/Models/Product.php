@@ -67,6 +67,53 @@ class Product {
         return $products;
     }
 
+
+    public function findNamePriceFromCategory($category_id)
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        // Je fais ma requete SQL
+        $sql = "SELECT `product`.`name`, `product`.`price`, `category`.`name` AS `category_name` FROM `product` INNER JOIN `category`
+        ON `product`.`category_id` = `category`.`id` WHERE `product`.`category_id` = 1";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $productsTriCategory = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Product');
+
+        return $productsTriCategory;
+    }
+
+    public function findNbetIDFromCategory()
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        // Je fais ma requete SQL
+        $sql = "SELECT  COUNT(`product`.`category_id` ) AS `nb`, 
+        `product`.`category_id` AS `id`,
+        `category`.`name` AS `category_name` 
+        FROM `product` 
+        INNER JOIN `category`
+        ON `product`.`category_id` = `category`.`id` 
+        GROUP BY `category`.`name`
+        ORDER BY `id`";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $productsNbetIDFromCategory = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Product');
+
+        return $productsNbetIDFromCategory;
+    }
+
+
+
     /**
      * Retourne la valeur de l'ID du produit courant
      *
