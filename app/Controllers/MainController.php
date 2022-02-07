@@ -78,7 +78,6 @@ class MainController {
      */
     public function show($viewName, $viewData = [])
     {
-        
         // Sur toutes les pages, on a besoin d'avoir accès à la variable $absoluteUrl. Celle-ci contient le chemin vers le dossier public et permet de générer les liens vers les assets.
         $absoluteUrl = $_SERVER['BASE_URI'];
 
