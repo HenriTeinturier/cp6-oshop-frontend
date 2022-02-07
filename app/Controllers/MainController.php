@@ -30,7 +30,7 @@ class MainController {
 
     public function testAction($params)
     {
-        $marqueid = 5; // recupere l'id de la marque à afficher
+        $marqueid = 5; // spécifie l'id de la marque à afficher
         $marqueModel = new Brand; // creer une instance de Brand
         $marque = $marqueModel->find($marqueid); // on execute find pour trouver le produit
         $params['marque'] = $marque; // on ajoute la marque à notre colis
@@ -39,20 +39,19 @@ class MainController {
         $marques = $marqueModels->findAll();
         $params['marques'] = $marques;
         
-        $typeid = 5; // recupere l'id de la marque à afficher
-        $typeModel = new Type; // creer une instance de Brand
-        $type = $typeModel->find($typeid); // on execute find pour trouver le produit
-        $params['type'] = $type; // on ajoute la marque à notre colis
+        $typeid = 5; // 
+        $typeModel = new Type; // 
+        $type = $typeModel->find($typeid); // 
+        $params['type'] = $type; // 
 
         $typeModels = new Type;
         $types = $typeModels->findAll();
         $params['types'] = $types;
 
-        $categoryid = 5; // recupere l'id de la marque à afficher
-        $categoryModel = new Category; // creer une instance de Brand
-        $category = $categoryModel->find($categoryid); // on execute find pour trouver le produit
-        $params['category'] = $category; // on ajoute la marque à notre colis
-
+        $categoryid = 5; // 
+        $categoryModel = new Category; // 
+        $category = $categoryModel->find($categoryid); //
+        $params['category'] = $category; // 
         $categoryModels = new Category;
         $categorys = $categoryModels->findAll();
         $params['categorys'] = $categorys;
