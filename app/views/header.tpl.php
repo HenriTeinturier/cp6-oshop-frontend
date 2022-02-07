@@ -45,24 +45,27 @@
           aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
         <!-- Navbar Collapse -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
-          <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a href="index.html" class="nav-link active">Home</a>
+              <a href="<?= $absoluteUrl?>" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Catégories</a>
+              <a href="<?= $absoluteUrl."/catalogue/categorie/5?>"?>" class="nav-link">Categorie</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Types de produit</a>
+              <a href="<?= $absoluteUrl."/catalogue/type/5?>"?>" class="nav-link">Types de produit</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Marques</a>
+              <a href="<?= $absoluteUrl."/catalogue/marque/5?>"?>" class="nav-link">Marques</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Blog</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= $absoluteUrl."/test"?>" class="nav-link">Test</a>
             </li>
           </ul>
           <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
