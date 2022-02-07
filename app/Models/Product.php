@@ -1,19 +1,18 @@
 <?php 
 
 // Un model est une classe qui sert à représenter une table de la BDD. Ce model Product représente la table "product".
-class Product {
+class Product extends CoreModel {
 
     // Pour chaque colonne de la table "product", on se crée une propriété privée dans le model Product.
     // On bloque l'accès à ces propriétés depuis l'extérieur de la classe grace au mot-clé private.
-    private $id;
+    
     private $name;
     private $description;
     private $picture;
     private $price;
     private $rate;
     private $status;
-    private $created_at;
-    private $updated_at;
+
     private $type_id;
     private $category_id;
     private $brand_id;
@@ -114,15 +113,7 @@ class Product {
 
 
 
-    /**
-     * Retourne la valeur de l'ID du produit courant
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+    
 
     /**
      * Get the value of name
@@ -247,45 +238,7 @@ class Product {
         return $this;
     }
 
-    /**
-     * Get the value of created_at
-     */ 
-    public function getCreated_at()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * Set the value of created_at
-     *
-     * @return  self
-     */ 
-    public function setCreated_at($created_at)
-    {
-        $this->created_at = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of updated_at
-     */ 
-    public function getUpdated_at()
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * Set the value of updated_at
-     *
-     * @return  self
-     */ 
-    public function setUpdated_at($updated_at)
-    {
-        $this->updated_at = $updated_at;
-
-        return $this;
-    }
+   
 
     /**
      * Get the value of type_id
