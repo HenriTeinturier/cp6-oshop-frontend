@@ -55,6 +55,27 @@ class Type extends CoreModel {
     }
 
 
+    public function findAllForFooter()
+    {
+        
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `type`
+        WHERE `footer_order` > 0
+        ORDER BY `footer_order` ASC
+        LIMIT 5";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // On traduit le résultat en un tableau contenant des objets de type Brand
+        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Type');
+
+        return $types;
+
+
+    }
  
     /**
      * Get the value of name

@@ -22,6 +22,9 @@ class CoreController {
        // On va chercher les 5 marques du footer à l'aide de la méthode dédiée dans le model Brand
        $brandModel = new Brand;
        $footerBrands = $brandModel->findAllForFooter();
+       $typeModel = new Type;
+       $footerTypes = $typeModel->findAllForFooter();
+
 
        require_once __DIR__ . '/../views/header.tpl.php';
        require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
