@@ -1,29 +1,23 @@
 <?php 
 
-// Un model est une classe qui sert à représenter une table de la BDD. Ce model Product représente la table "product".
-class Brand extends CoreModel {
+class Brand  extends CoreModel{
 
-    // Pour chaque colonne de la table "product", on se crée une propriété privée dans le model Product.
-    // On bloque l'accès à ces propriétés depuis l'extérieur de la classe grace au mot-clé private.
-    
+    // Propriétés du model Brand
     private $name;
     private $footer_order;
+
     
-
-   
-
-
     /**
-     * Méthode qui permet de récupérer un produit donné dans la BDD
+     * Méthode permettant de récupérer un objet de type Brand d'après son ID
      *
-     * @param int $id
-     * @return Product
+     * @param int $id ID de la marque à trouver
+     * @return Brand
      */
     public function find($id)
     {
         // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD.
         $pdo = Database::getPDO();
-       
+            
         // Je fais ma requete SQL
         $sql = "SELECT * FROM `brand`
         WHERE `id` = " . $id;
@@ -31,14 +25,14 @@ class Brand extends CoreModel {
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
 
-        // On veut récupérer le résultat sous la forme d'un objet de type Product. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Product et remplir les propriétés avec les infos de la BDD.
+        // On veut récupérer le résultat sous la forme d'un objet de type Brand. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Brand et remplir les propriétés avec les infos de la BDD.
         $brand = $pdoStatement->fetchObject('Brand');
 
         return $brand;
     }
 
     /**
-     * Méthode qui récupère tous les produits de la BDD
+     * Méthode qui récupère toutes les marques de la BDD
      *
      * @return Array
      */
@@ -53,16 +47,41 @@ class Brand extends CoreModel {
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
 
-        // Je recupère un tableau avec tous les produits
+        // Je recupère un tableau avec toutes les marques
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $brand = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Brand');
+        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Brand');
 
-        return $brand;
+        return $brands;
     }
 
-    
+    /**
+     * Méthode permettant de récupérer les 5 marques à afficher dans le footer
+     *
+     * @return Array
+     */
+    public function findAllForFooter()
+    {
+        
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
 
-  
+        $sql = "SELECT * FROM `brand`
+        WHERE `footer_order` > 0
+        ORDER BY `footer_order` ASC
+        LIMIT 5";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // On traduit le résultat en un tableau contenant des objets de type Brand
+        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Brand');
+
+        return $brands;
+
+
+    }
+
+
 
     /**
      * Get the value of name
@@ -104,5 +123,4 @@ class Brand extends CoreModel {
         return $this;
     }
 
-  
 }

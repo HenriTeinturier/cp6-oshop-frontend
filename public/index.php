@@ -7,7 +7,6 @@ require __DIR__.'/../vendor/autoload.php';
 require __DIR__ . '/../app/Utils/Database.php';
 require __DIR__ . '/../app/Controllers/MainController.php';
 require __DIR__ . '/../app/Controllers/CatalogController.php';
-
 require __DIR__ . '/../app/Models/CoreModel.php';
 require __DIR__ . '/../app/Models/Product.php';
 require __DIR__ . '/../app/Models/Brand.php';
@@ -119,6 +118,7 @@ $router->map(
     'legal-notices'
 );
 
+// Route qui a pour unique but d'afficher des tests
 $router->map(
     'GET',
     '/test',
@@ -126,16 +126,14 @@ $router->map(
         'controller' => 'MainController',
         'method' => 'testAction'
     ],
-    'testPage'
+    'page-test'
 );
-
 
 // La méthode match permet à AltoRouter de savoir si la page demandée existe dans la liste des routes
 // $match contient un tableau avec les informations de la route actuelle (controller, méthode, nom, etc)
 // Si la route actuelle n'existe pas, $match contient false
 $match = $router->match();
 
-dump($router);
 // Décommenter la ligne suivante pour voir le contenu de $match
 // dump($match);
 
@@ -153,7 +151,6 @@ if($match !== false) {
 
     // On récupère les paramètres dynamiques de l'url (exemple : id)
     $params = $match['params'];
-    
 
     // On instancie le controller dans lequel est rangé la méthode
     // Si $controllerToUse contient "MainController", ça revient à écrire "new MainController()"

@@ -1,14 +1,15 @@
 <?php
 
+// Le CoreModel est un model qui sert à stocker les propriétés et méthodes communes à tous les models.
 class CoreModel {
 
+    // On déclare les propriétés que possèdent tous les models
     protected $id;
     protected $created_at;
     protected $updated_at;
 
-    
 
-
+    // On déclare les méthodes que possèdent tous les models
     /**
      * Get the value of id
      */ 
@@ -17,7 +18,7 @@ class CoreModel {
         return $this->id;
     }
 
-    /**
+     /**
      * Get the value of created_at
      */ 
     public function getCreated_at()
@@ -56,4 +57,6 @@ class CoreModel {
 
         return $this;
     }
+
+
 }

@@ -1,29 +1,23 @@
 <?php 
 
-// Un model est une classe qui sert à représenter une table de la BDD. Ce model Product représente la table "product".
 class Type extends CoreModel {
 
-    // Pour chaque colonne de la table "product", on se crée une propriété privée dans le model Product.
-    // On bloque l'accès à ces propriétés depuis l'extérieur de la classe grace au mot-clé private.
-    
+    // Propriétés du model Type
     private $name;
     private $footer_order;
+
     
-
-   
-
-
     /**
-     * Méthode qui permet de récupérer un produit donné dans la BDD
+     * Méthode permettant de récupérer un objet de type Type d'après son ID
      *
-     * @param int $id
-     * @return Product
+     * @param int $id ID du type à trouver
+     * @return Type
      */
     public function find($id)
     {
         // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD.
         $pdo = Database::getPDO();
-       
+            
         // Je fais ma requete SQL
         $sql = "SELECT * FROM `type`
         WHERE `id` = " . $id;
@@ -31,14 +25,14 @@ class Type extends CoreModel {
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
 
-        // On veut récupérer le résultat sous la forme d'un objet de type Product. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Product et remplir les propriétés avec les infos de la BDD.
+        // On veut récupérer le résultat sous la forme d'un objet de type Type. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Type et remplir les propriétés avec les infos de la BDD.
         $type = $pdoStatement->fetchObject('Type');
 
         return $type;
     }
 
     /**
-     * Méthode qui récupère tous les produits de la BDD
+     * Méthode qui récupère tous les types de la BDD
      *
      * @return Array
      */
@@ -53,17 +47,15 @@ class Type extends CoreModel {
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
 
-        // Je recupère un tableau avec tous les produits
+        // Je recupère un tableau avec tous les types
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $type = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Type');
+        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Type');
 
-        return $type;
+        return $types;
     }
 
-    
 
-    
-
+ 
     /**
      * Get the value of name
      */ 
@@ -104,5 +96,5 @@ class Type extends CoreModel {
         return $this;
     }
 
-    
+
 }

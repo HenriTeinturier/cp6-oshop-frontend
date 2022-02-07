@@ -81,11 +81,9 @@
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Marques</h6>
             <ul class="list-unstyled">
-              <li> <a href="#" class="text-muted">oCirage</a></li>
-              <li> <a href="#" class="text-muted">Shossures</a></li>
-              <li> <a href="#" class="text-muted">BOOTstrap</a></li>
-              <li> <a href="#" class="text-muted">Talonette</a></li>
-              <li> <a href="#" class="text-muted">oPompes</a></li>
+              <?php foreach($footerBrands as $currentBrand): ?>
+                <li> <a href="#" class="text-muted"><?= $currentBrand->getName() ?></a></li>
+              <?php endforeach ?>
             </ul>
           </div>
           <div class="col-lg-4">

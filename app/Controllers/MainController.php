@@ -7,7 +7,6 @@ class MainController {
      * @return void
      */
     public function homeAction() {
-        
         $this->show('home');
     }
 
@@ -28,45 +27,23 @@ class MainController {
         $this->show('legalmentions');
     }
 
-    public function testAction($params)
-    {
-        $marqueid = 5; // spécifie l'id de la marque à afficher
-        $marqueModel = new Brand; // creer une instance de Brand
-        $marque = $marqueModel->find($marqueid); // on execute find pour trouver le produit
-        $params['marque'] = $marque; // on ajoute la marque à notre colis
+    public function testAction() {
+        echo "On affiche nos tests ci-dessous";
 
-        $marqueModels = new Brand;
-        $marques = $marqueModels->findAll();
-        $params['marques'] = $marques;
-        
-        $typeid = 5; // 
-        $typeModel = new Type; // 
-        $type = $typeModel->find($typeid); // 
-        $params['type'] = $type; // 
+        // On teste de récupérer la marque n°2
+        // On intancie le model Brand pour utiliser sa méthode find
+        $brandModel = new Brand;
 
-        $typeModels = new Type;
-        $types = $typeModels->findAll();
-        $params['types'] = $types;
+        // On utilise la méthode find pour récupérer la marque dans une variable
+        $brand = $brandModel->find(3);
 
-        $categoryid = 5; // 
-        $categoryModel = new Category; // 
-        $category = $categoryModel->find($categoryid); //
-        $params['category'] = $category; // 
-        $categoryModels = new Category;
-        $categorys = $categoryModels->findAll();
-        $params['categorys'] = $categorys;
+        dump($brand);
+        echo $brand->getName();
 
-        $productsTriCategoryModels = new Product;
-        $productsTriCategory =  $productsTriCategoryModels->findNamePriceFromCategory(1);
-        $params['productsTri'] = $productsTriCategory;
+        // On teste la méthode findAll qui doit renvoyer toutes les marques
+        $brands = $brandModel->findAll();
 
-
-        $productsNbetIDFromCategoryModels = new Product;
-        $productsNbetIDFromCategory = $productsNbetIDFromCategoryModels->findNbetIDFromCategory();
-        $params['NbetIDFromCategory'] = $productsNbetIDFromCategory;
-        
-        // On délègue l'affichage de la page à la méthode show
-        $this->show('test', $params);
+        dump($brands);
     }
 
     /**
@@ -78,8 +55,17 @@ class MainController {
      */
     public function show($viewName, $viewData = [])
     {
+        // On demande à PHP d'aller chercher la variable $router pour pouvoir l'utiliser dans nos templates.
+        //! C'est une mauvaise pratique. Elle passe outre les différents principes mis en place avec notre architecture. Donc on verra plus tard comment procéder autrement.
+        global $router;
+
         // Sur toutes les pages, on a besoin d'avoir accès à la variable $absoluteUrl. Celle-ci contient le chemin vers le dossier public et permet de générer les liens vers les assets.
         $absoluteUrl = $_SERVER['BASE_URI'];
+
+
+        // On va chercher les 5 marques du footer à l'aide de la méthode dédiée dans le model Brand
+        $brandModel = new Brand;
+        $footerBrands = $brandModel->findAllForFooter();
 
         require_once __DIR__ . '/../views/header.tpl.php';
         require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';

@@ -25,6 +25,7 @@
 
           // On a besoin d'une variable qui représente le produit. On l'extrait depuis le tableau $viewData
           $product = $viewData['product'];
+          dump($product);
         ?>
         <div class="col-lg-6 col-sm-12">
           <div class="mb-3">

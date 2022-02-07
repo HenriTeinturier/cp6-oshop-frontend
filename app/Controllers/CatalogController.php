@@ -10,9 +10,16 @@ class CatalogController {
      */
     public function categoriesAction($params)
     {
+
+        // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode find du model Category
+        $categoryModel = new Category;
+        $category = $categoryModel->find($params['id']);
+
         // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
         $data = [
-            'id' => $params['id']
+            'id' => $params['id'],
+            'category' => $category
         ];
 
         $this->show('categories', $data);
@@ -77,8 +84,17 @@ class CatalogController {
      */
     public function show($viewName, $viewData = [])
     {
+        // On demande à PHP d'aller chercher la variable $router pour pouvoir l'utiliser dans nos templates.
+        //! C'est une mauvaise pratique. Elle passe outre les différents principes mis en place avec notre architecture. Donc on verra plus tard comment procéder autrement.
+        global $router;
+
         // Sur toutes les pages, on a besoin d'avoir accès à la variable $absoluteUrl. Celle-ci contient le chemin vers le dossier public et permet de générer les liens vers les assets.
         $absoluteUrl = $_SERVER['BASE_URI'];
+
+
+        // On va chercher les 5 marques du footer à l'aide de la méthode dédiée dans le model Brand
+        $brandModel = new Brand;
+        $footerBrands = $brandModel->findAllForFooter();
 
         require_once __DIR__ . '/../views/header.tpl.php';
         require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';
