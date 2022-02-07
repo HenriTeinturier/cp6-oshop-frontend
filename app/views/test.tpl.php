@@ -20,15 +20,15 @@
     </div>
   </section>
 
-  <table class="demo">
+  <table class="demo table">
 	
 	<thead>
 	<tr>
 		<th>Marques</th>
 		<th>Types</th>
 		<th>Categories</th>
-    <th>Nom & Prenom category 1</th>
-    <th>NbetIDFromCategory</th>
+    <th>Mega Bonus:tous nom et prenom de la categorie 1</th>
+    <th>Mega Bonus 2 : Nbr de produits pôur chaque catégorie/th>
 	</tr>
 	</thead>
 	<tbody>
@@ -77,7 +77,7 @@
         
 
         $productsTri = $viewData['productsTri'];
-        echo "Mega Bonus:tous  nom et prenom de la categorie 1 <br>";
+        echo "<br>";
         foreach ($productsTri as $id => $productsTriObject):
           echo $productsTriObject->getName()." ".$productsTriObject->getPrice()." ".$productsTriObject->category_name."<br>";
           
@@ -89,7 +89,7 @@
         
 
         $NbetIDFromCategory = $viewData['NbetIDFromCategory'];
-        echo "Mega Bonus 2 : Nbr de produits pôur chaque catégorie<br>";
+        echo "<br>";
         foreach ($NbetIDFromCategory as $id => $NbetIDFromCategoryObject):
           echo "nb: ".$NbetIDFromCategoryObject->nb." id: ".$NbetIDFromCategoryObject->getId()." categorie: ".$NbetIDFromCategoryObject->category_name."<br>";
           
