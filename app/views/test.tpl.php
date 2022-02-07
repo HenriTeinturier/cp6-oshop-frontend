@@ -27,8 +27,8 @@
 		<th>Marques</th>
 		<th>Types</th>
 		<th>Categories</th>
-    <th>Mega Bonus:tous nom et prenom de la categorie 1</th>
-    <th>Mega Bonus 2 : Nbr de produits pôur chaque catégorie/th>
+    <th>Mega Bonus:tous nom et prix de la categorie 1</th>
+    <th>Mega Bonus 2 : Nbr de produits pôur chaque catégorie</th>
 	</tr>
 	</thead>
 	<tbody>
