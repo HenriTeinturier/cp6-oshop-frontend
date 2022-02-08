@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 
 class MainController extends CoreController {
 
@@ -12,8 +13,31 @@ class MainController extends CoreController {
      * @return void
      */
     public function homeAction() {
-        $this->show('home');
+
+
+
+        // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode find du model Category
+        $categoryHomeModel = new Category;
+        $categorysHome = $categoryHomeModel->findCategoryHome();
+    
+        
+        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
+        $data = [
+            
+            'categorys' => $categorysHome,  // objet category -> getName pour le nom de la categorie
+            
+    
+        ];
+    
+        $this->show('home', $data);
+
+        
     }
+
+    
+
+    
 
     /**
      * Méthode qui gère la page "à propos"

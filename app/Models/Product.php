@@ -115,9 +115,9 @@ class Product extends CoreModel{
         $sql = "SELECT 
         `product`.*, 
         `type`.`name`  AS `type_name`
-        FROM `product`
+        FROM `product` 
         INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
-        WHERE `type_id`  = " . $id;
+        WHERE `type_id`  = " . $id . " LIMIT 12" ;
 
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
@@ -143,9 +143,9 @@ class Product extends CoreModel{
         $sql = "SELECT 
         `product`.*, 
         `type`.`name`  AS `type_name`
-        FROM `product`
+        FROM `product` 
         INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
-        WHERE `brand_id`  = " . $id;
+        WHERE `brand_id`  = " . $id . " LIMIT 12" ;
 
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
