@@ -21,10 +21,19 @@ class CatalogController extends CoreController {
         $categoryModel = new Category;
         $category = $categoryModel->find($params['id']);
 
+        // Pour gérer les infos de chaque produit, on a besoin de récupérer les produits de la categorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode findAllProductByCategory du model Product
+        $productModel = new Product;
+        $products = $productModel->findAllProductByCategory($params['id']);
+
+
+
         // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
         $data = [
-            'id' => $params['id'],
-            'category' => $category
+            'id' => $params['id'], // id categorie
+            'category' => $category,  // objet category -> getName pour le nom de la categorie
+            'products' => $products // tableau avec tous les objets Produits
+
         ];
 
         $this->show('categories', $data);
