@@ -13,7 +13,7 @@
     <?php
 
 // On a besoin d'une variable qui représente le produit. On l'extrait depuis le tableau $viewData
-$product = $viewData['product'];
+// $product = $viewData['product'];
 $brandObjet = new Brand;
 $marque_id = $product->getBrand_id();
 

@@ -25,6 +25,10 @@ class CoreController {
        $typeModel = new Type;
        $footerTypes = $typeModel->findAllForFooter();
 
+       // On "déballe" le "colis" $viewData. C'est à dire on extrait
+      // chacune de ses entrées dans des variables qui portent le même nom que les entré
+      extract($viewData);
+
 
        require_once __DIR__ . '/../views/header.tpl.php';
        require_once __DIR__ . '/../views/' . $viewName . '.tpl.php';

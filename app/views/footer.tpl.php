@@ -72,7 +72,11 @@
             <h6 class="text-uppercase text-dark mb-3">Produits</h6>
             <ul class="list-unstyled">
               <?php foreach($footerTypes as $currentType): ?>
-                <li> <a href="<?php echo $router->generate('page-type', ['id' => $currentType->getId()])  ?>" class="text-muted"><?= $currentType->getName() ?></a></li>
+                <li> 
+                  <a href="<?php echo $router->generate('page-type', ['id' => $currentType->getId()])  ?>" class="text-muted">
+                    <?= $currentType->getName() ?>
+                  </a>
+                </li>
               <?php endforeach ?>
 
               
@@ -83,7 +87,11 @@
             <h6 class="text-uppercase text-dark mb-3">Marques</h6>
             <ul class="list-unstyled">
               <?php foreach($footerBrands as $currentBrand): ?>
-                <li> <a href="<?php echo $router->generate('page-brand', ['id' => $currentBrand->getId()])  ?>" class="text-muted"><?= $currentBrand->getName() ?></a></li>
+                <li>
+                   <a href="<?php echo $router->generate('page-brand', ['id' => $currentBrand->getId()])  ?>" class="text-muted">
+                    <?= $currentBrand->getName() ?>
+                  </a>
+                  </li>
               <?php endforeach ?>
             </ul>
           </div>
@@ -130,7 +138,7 @@
       </div>
     </div>
   </footer>
-
+                
   <!-- JS -->
   <script src="<?= $absoluteUrl ?>/assets/js/jquery.min.js"></script>
   <script src="<?= $absoluteUrl ?>/assets/js/popper.min.js"></script>
