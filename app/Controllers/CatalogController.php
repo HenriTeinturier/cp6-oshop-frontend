@@ -1,7 +1,11 @@
 <?php
 
-class CatalogController extends CoreController
-{
+namespace App\Controllers;
+
+use App\Models\Category;
+use App\Models\Product;
+
+class CatalogController extends CoreController {
 
     /**
      * Méthode gérant l'affichage de la page listant les produits par catégorie
@@ -75,4 +79,5 @@ class CatalogController extends CoreController
         // On appelle la méthode show pour qu'elle affiche la page d'un produit lui passant les paramètres de l'url.
         $this->show('product', $params);
     }
+
 }

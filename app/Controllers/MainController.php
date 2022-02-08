@@ -1,14 +1,17 @@
 <?php
-class MainController extends CoreController
-{
+
+namespace App\Controllers;
+
+use App\Models\Brand;
+
+class MainController extends CoreController {
 
     /**
      * Méthode qui gère l'affichage de la page d'accueil
      *
      * @return void
      */
-    public function homeAction()
-    {
+    public function homeAction() {
         $this->show('home');
     }
 
@@ -25,12 +28,17 @@ class MainController extends CoreController
 
     public function legalMentionsAction()
     {
+        
         // On délègue l'affichage de la page à la méthode show
         $this->show('legalmentions');
     }
 
-    public function testAction()
-    {
+    /**
+     * Méthode qui affiche une page de test (pour tester toutes sortes de codes)
+     *
+     * @return void
+     */
+    public function testAction() {
         echo "On affiche nos tests ci-dessous";
 
         // On teste de récupérer la marque n°2
@@ -48,4 +56,5 @@ class MainController extends CoreController
 
         dump($brands);
     }
+
 }

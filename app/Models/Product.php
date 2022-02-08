@@ -1,8 +1,16 @@
 <?php 
 
+namespace App\Models;
+
+use PDO;
+use App\Utils\Database;
+use App\Models\CoreModel;
+
+
 // Un model est une classe qui sert à représenter une table de la BDD. Ce model Product représente la table "product".
 class Product extends CoreModel{
 
+    
     // Pour chaque colonne de la table "product", on se crée une propriété privée dans le model Product.
     // On bloque l'accès à ces propriétés depuis l'extérieur de la classe grace au mot-clé private.
     private $name;
@@ -25,6 +33,7 @@ class Product extends CoreModel{
      */
     public function find($id)
     {
+
         // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD.
         $pdo = Database::getPDO();
        
@@ -36,7 +45,7 @@ class Product extends CoreModel{
         $pdoStatement = $pdo->query($sql);
 
         // On veut récupérer le résultat sous la forme d'un objet de type Product. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Product et remplir les propriétés avec les infos de la BDD.
-        $product = $pdoStatement->fetchObject('Product');
+        $product = $pdoStatement->fetchObject(Product::class);
 
         return $product;
     }
@@ -59,7 +68,7 @@ class Product extends CoreModel{
 
         // Je recupère un tableau avec tous les produits
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $products = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Product');
+        $products = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Product::class);
 
         return $products;
     }

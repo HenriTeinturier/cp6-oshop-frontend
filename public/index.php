@@ -4,18 +4,26 @@
 // On commence par inclure le fichier autoload.php. Ce fichier se charge d'inclure toutes les classes téléchargées via composer.
 require __DIR__.'/../vendor/autoload.php';
 
-require __DIR__ . '/../app/Utils/Database.php';
+// require __DIR__ . '/../app/Utils/Database.php';
+// require __DIR__ . '/../app/Controllers/CoreController.php';
+// require __DIR__ . '/../app/Controllers/MainController.php';
+// require __DIR__ . '/../app/Controllers/CatalogController.php';
+// require __DIR__ . '/../app/Models/CoreModel.php';
+// require __DIR__ . '/../app/Models/Product.php';
+// require __DIR__ . '/../app/Models/Brand.php';
+// require __DIR__ . '/../app/Models/Category.php';
+// require __DIR__ . '/../app/Models/Type.php';
 
-require __DIR__ . '/../app/Controllers/CoreController.php';
-require __DIR__ . '/../app/Controllers/MainController.php';
-require __DIR__ . '/../app/Controllers/CatalogController.php';
+// spl_autoload_register('handleClassNotLoaded');
 
-require __DIR__ . '/../app/Models/CoreModel.php';
-require __DIR__ . '/../app/Models/Product.php';
-require __DIR__ . '/../app/Models/Brand.php';
-require __DIR__ . '/../app/Models/Category.php';
-require __DIR__ . '/../app/Models/Type.php';
+// function handleClassNotLoaded($className) {
 
+    // echo "La classe non trouvée est : " . $className;
+
+    // require __DIR__ . '/../app/Controllers/'. $className.'.php';
+
+
+// }
 
 
 //! $pageToDisplay n'est plus utilisé, AltoRouter récupère automatiquement le paramètre GET page
@@ -113,7 +121,7 @@ $router->map(
 
 $router->map(
     'GET',
-    '/mentions-legales',
+    '/mentions-legales-et-cgu',
     [
         'controller' => 'MainController',
         'method' => 'legalMentionsAction'
@@ -146,7 +154,7 @@ $match = $router->match();
 if($match !== false) {
   
     // On récupère le nom du controller dans lequel est rangé notre méthode qui gère la page demandée
-    $controllerToUse = $match['target']['controller'];
+    $controllerToUse = 'App\Controllers\\' . $match['target']['controller'];
 
     // On récupère dans le tableau des routes le nom de la méthode à exécuter. 
     $methodToUse = $match['target']['method'];

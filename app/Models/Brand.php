@@ -1,5 +1,11 @@
 <?php 
 
+namespace App\Models;
+
+use PDO;
+use App\Utils\Database;
+use App\Models\CoreModel;
+
 class Brand  extends CoreModel{
 
     // Propriétés du model Brand
@@ -26,7 +32,7 @@ class Brand  extends CoreModel{
         $pdoStatement = $pdo->query($sql);
 
         // On veut récupérer le résultat sous la forme d'un objet de type Brand. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Brand et remplir les propriétés avec les infos de la BDD.
-        $brand = $pdoStatement->fetchObject('Brand');
+        $brand = $pdoStatement->fetchObject(Brand::class);
 
         return $brand;
     }
@@ -49,7 +55,7 @@ class Brand  extends CoreModel{
 
         // Je recupère un tableau avec toutes les marques
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Brand');
+        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Brand::class);
 
         return $brands;
     }
@@ -74,7 +80,8 @@ class Brand  extends CoreModel{
         $pdoStatement = $pdo->query($sql);
 
         // On traduit le résultat en un tableau contenant des objets de type Brand
-        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Brand');
+        // Brand::class permet d'aller chercher le FQCN (fully qualified className) de la classe Brand
+        $brands = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Brand::class);
 
         return $brands;
 

@@ -1,7 +1,7 @@
 <?php 
 // Pour faciliter son utilisation, on récupère l'objet Category rangé dans viewData dans une variable
-// $category = $viewsData['category']
-
+//! Cette ligne n'est plus nécessaire car on extrait maintenant automatiquement $viewData dans la méthode show
+// $category = $viewData['category'];
 ?>
   <section class="hero">
     <div class="container">

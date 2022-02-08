@@ -10,44 +10,38 @@
 
   <section class="products-grid">
     <div class="container-fluid">
-    <?php
 
-// On a besoin d'une variable qui représente le produit. On l'extrait depuis le tableau $viewData
-// $product = $viewData['product'];
-$brandObjet = new Brand;
-$marque_id = $product->getBrand_id();
-
-
-?>
       <div class="row">
         <!-- product-->
         <div class="col-lg-6 col-sm-12">
           <div class="product-image">
             <a href="detail.html" class="product-hover-overlay-link">
-              <img src="<?=$absoluteUrl."/".$product->getPicture();   ?>" alt="product" class="img-fluid">
+              <img src="images/produits/1-kiss.jpg" alt="product" class="img-fluid">
             </a>
           </div>
         </div>
 
-       
+        <?php
+
+          // On a besoin d'une variable qui représente le produit. On l'extrait depuis le tableau $viewData
+          //! Plus besoin de cette ligne grace à l'extract dans la méthode show
+          // $product = $viewData['product'];
+          // dump($product);
+        ?>
         <div class="col-lg-6 col-sm-12">
           <div class="mb-3">
             <h3 class="h3 text-uppercase mb-1"><?= $product->getName() ?></h3>
-            <div class="text-muted">by <em><?= $brandObjet->find($marque_id)->getName() ?></em></div>
+            <div class="text-muted">by <em>BOOTstrap</em></div>
             <div>
-              <?php $productRate = $product->getRate();
-               for ($etoile = 1; $etoile < 6; $etoile++):
-                  if ($etoile <= $productRate):              ?>
-                     <i class="fa fa-star"></i> 
-                  <?php else: ?>
-                    <i class="fa fa-star-o"></i>
-                  <?php  endif ?>
-                <?php  endfor ?>
-              
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
             </div>
           </div>
           <div class="my-2">
-            <div class="text-muted"><span class="h4"><?= $product->getPrice(); ?></span> TTC</div>
+            <div class="text-muted"><span class="h4">40 €</span> TTC</div>
           </div>
           <div class="product-action-buttons">
             <form action="" method="post">
@@ -57,7 +51,7 @@ $marque_id = $product->getBrand_id();
           </div>
           <div class="mt-5">
             <p>
-              <?= $product->getDescription(); ?>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, consequuntur vel libero magni tempore rerum eos ipsum assumenda, velit architecto exercitationem animi dicta quis at facilis veritatis ut accusamus ipsa sequi recusandae officia similique tenetur? Nemo, repellat at dolore nobis non reprehenderit iusto, nostrum consectetur unde ab id quo quia eum rem veniam, ratione cum fuga autem odio perspiciatis minus reiciendis recusandae est. Earum praesentium minus quisquam et voluptates facere saepe, non velit tempore obcaecati! Porro esse sint blanditiis nulla in officiis aut dicta ipsum fugit ex enim, ab voluptas maxime culpa? Debitis, sequi minus cum, quos minima tempora eum quas repellat sunt incidunt delectus dolor eaque. Natus fugiat neque facere placeat corporis, commodi cum numquam vel exercitationem temporibus eum?
             </p>
           </div>
         </div>

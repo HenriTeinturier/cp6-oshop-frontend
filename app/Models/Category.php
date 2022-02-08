@@ -1,5 +1,12 @@
 <?php 
 
+namespace App\Models;
+
+use PDO;
+use App\Utils\Database;
+use App\Models\CoreModel;
+
+
 // le model Category étend (ou hérite de) la classe CoreModel
 class Category extends CoreModel {
 
@@ -28,7 +35,7 @@ class Category extends CoreModel {
         $pdoStatement = $pdo->query($sql);
 
         // On veut récupérer le résultat sous la forme d'un objet de type Category. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Category et remplir les propriétés avec les infos de la BDD.
-        $category = $pdoStatement->fetchObject('Category');
+        $category = $pdoStatement->fetchObject(Category::class);
 
         return $category;
     }
@@ -51,7 +58,7 @@ class Category extends CoreModel {
 
         // Je recupère un tableau avec toutes les catégories
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $categories = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Category');
+        $categories = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Category::class);
 
         return $categories;
     }

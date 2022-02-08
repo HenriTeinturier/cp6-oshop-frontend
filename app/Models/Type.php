@@ -1,5 +1,12 @@
 <?php 
 
+namespace App\Models;
+
+use PDO;
+use App\Utils\Database;
+use App\Models\CoreModel;
+
+
 class Type extends CoreModel {
 
     // Propriétés du model Type
@@ -26,7 +33,7 @@ class Type extends CoreModel {
         $pdoStatement = $pdo->query($sql);
 
         // On veut récupérer le résultat sous la forme d'un objet de type Type. Donc on utilise fetchObject (à la place de fetch) qui va automatiquement instancier la classe Type et remplir les propriétés avec les infos de la BDD.
-        $type = $pdoStatement->fetchObject('Type');
+        $type = $pdoStatement->fetchObject(Type::class);
 
         return $type;
     }
@@ -49,17 +56,22 @@ class Type extends CoreModel {
 
         // Je recupère un tableau avec tous les types
         // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
-        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Type');
+        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Type::class);
 
         return $types;
     }
 
 
+    /**
+     * Méthode permettant de récupérer les 5 types à afficher dans le footer
+     *
+     * @return Array
+     */
     public function findAllForFooter()
     {
-        
         // Je me connecte à la BDD
         $pdo = Database::getPDO();
+
 
         $sql = "SELECT * FROM `type`
         WHERE `footer_order` > 0
@@ -69,13 +81,13 @@ class Type extends CoreModel {
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
 
-        // On traduit le résultat en un tableau contenant des objets de type Brand
-        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Type');
+        $types = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Type::class);
 
         return $types;
 
-
     }
+
+
  
     /**
      * Get the value of name
