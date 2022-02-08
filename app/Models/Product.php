@@ -101,6 +101,62 @@ class Product extends CoreModel{
         return $products;
     }
 
+    /**
+     * Méthode qui récupère tous les produits de la BDD
+     *
+     * @return Array
+     */
+    public function findAllProductByType($id)
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        // Je fais ma requete SQL
+        $sql = "SELECT 
+        `product`.*, 
+        `type`.`name`  AS `type_name`
+        FROM `product`
+        INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
+        WHERE `type_id`  = " . $id;
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $products = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Product::class);
+
+        return $products;
+    }
+
+     /**
+     * Méthode qui récupère tous les produits de la BDD
+     *
+     * @return Array
+     */
+    public function findAllProductByBrand($id)
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        // Je fais ma requete SQL
+        $sql = "SELECT 
+        `product`.*, 
+        `type`.`name`  AS `type_name`
+        FROM `product`
+        INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
+        WHERE `brand_id`  = " . $id;
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $products = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Product::class);
+
+        return $products;
+    }
+
 
     /**
      * Get the value of name

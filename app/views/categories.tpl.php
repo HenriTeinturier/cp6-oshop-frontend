@@ -64,7 +64,9 @@
           </div>
           <div class="py-2">
             <p class="text-muted text-sm mb-1"><?= $productObjet->type_name ?></p>
-            <h3 class="h6 text-uppercase mb-1"><a href="detail.html" class="text-dark"><?= $productObjet->getName() ?></a></h3><span class="text-muted"><?= $productObjet->getPrice() ?></span>
+            <h3 class="h6 text-uppercase mb-1">
+              <a href="<?= $router->generate('page-product', ['id' => $productObjet->getId()])  ?>" class="text-dark"><?= $productObjet->getName() ?></a>
+            </h3><span class="text-muted"><?= $productObjet->getPrice() ?></span>
           </div>
         </div>
         <!-- /product-->

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Type;
+use App\Models\Brand;
 
 class CatalogController extends CoreController {
 
@@ -47,8 +49,28 @@ class CatalogController extends CoreController {
      */
     public function typeAction($params)
     {
+         // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode find du model Category
+        $typeModel = new Type;
+        $type = $typeModel->find($params['id']);
+
+        // Pour gérer les infos de chaque produit, on a besoin de récupérer les produits de la categorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode findAllProductByCategory du model Product
+        $productModel = new Product;
+        $products = $productModel->findAllProductByType($params['id']);
+
+
+
+        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
+        $data = [
+            'id' => $params['id'], // id categorie
+            'type' => $type,  // objet category -> getName pour le nom de la categorie
+            'products' => $products // tableau avec tous les objets Produits
+
+        ];
+
         // On appelle la méthode show pour qu'elle affiche la page types en lui passant les paramètres de l'url.
-        $this->show('types', $params);
+        $this->show('types', $data);
     }
 
     /**
@@ -59,8 +81,29 @@ class CatalogController extends CoreController {
      */
     public function brandAction($params)
     {
+         // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode find du model Category
+        $brandModel = new Brand;
+        $brand = $brandModel->find($params['id']);
+
+        // Pour gérer les infos de chaque produit, on a besoin de récupérer les produits de la categorie dont l'ID est dans l'url.
+        // Pour ça on utilise la méthode findAllProductByCategory du model Product
+        $productModel = new Product;
+        $products = $productModel->findAllProductByBrand($params['id']);
+
+
+
+        // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
+        $data = [
+            'id' => $params['id'], // id categorie
+            'brand' => $brand,  // objet category -> getName pour le nom de la categorie
+            'products' => $products // tableau avec tous les objets Produits
+
+        ];
+
+
         // On appelle la méthode show pour qu'elle affiche la page des produits filtrés par marque en lui passant les paramètres de l'url.
-        $this->show('brands', $params);
+        $this->show('brands', $data);
     }
 
 
