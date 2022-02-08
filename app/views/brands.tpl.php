@@ -3,7 +3,7 @@
     <div class="container">
       <!-- Breadcrumbs -->
       <ol class="breadcrumb justify-content-center">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="<?= $router->generate('homepage')  ?>">Home</a></li>
         <li class="breadcrumb-item active"><?= $brand->getName() ?></li>
       </ol>
       <!-- Hero Content-->
@@ -45,13 +45,13 @@
         
         <div class="product col-xl-3 col-lg-4 col-sm-6">
           <div class="product-image">
-            <a href="detail.html" class="product-hover-overlay-link">
+            <a href="<?= $router->generate('page-product', ['id' => $productObjet->getId()])  ?>" class="product-hover-overlay-link">
               <img src="<?= $absoluteUrl . "/". $productObjet->getPicture() ?>" alt="product" class="img-fluid">
             </a>
           </div>
           <div class="product-action-buttons">
             <a href="#" class="btn btn-outline-dark btn-product-left"><i class="fa fa-shopping-cart"></i></a>
-            <a href="detail.html" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
+            <a href="<?= $router->generate('page-product', ['id' => $productObjet->getId()])  ?>" class="btn btn-dark btn-buy"><i class="fa-search fa"></i><span class="btn-buy-label ml-2">Voir</span></a>
           </div>
           <div class="py-2">
             <p class="text-muted text-sm mb-1"><?= $productObjet->type_name ?></p>

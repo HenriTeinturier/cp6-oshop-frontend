@@ -2,7 +2,7 @@
     <div class="container">
       <!-- Breadcrumbs -->
       <ol class="breadcrumb justify-content-center">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="<?= $router->generate('homepage')  ?>">Home</a></li>
         <li class="breadcrumb-item active">Produits</li>
       </ol>
     </div>
@@ -15,7 +15,7 @@
         <!-- product-->
         <div class="col-lg-6 col-sm-12">
           <div class="product-image">
-            <a href="detail.html" class="product-hover-overlay-link">
+            <a href="#" class="product-hover-overlay-link">
               <img src="<?= $absoluteUrl . "/". $product->getPicture() ?>" alt="product" class="img-fluid">
             </a>
           </div>
