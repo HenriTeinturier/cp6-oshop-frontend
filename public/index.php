@@ -83,6 +83,18 @@ $router->map(
     'page-category'
 );
 
+$router->map(
+    'GET',
+    // AltoRouter prévoit des urls avec une partie dynamique. Ici [i:id] veut dire "n'importe quel entier"
+    '/catalogue/categorie/[i:id]/by-[a:order]',
+    [
+        'controller' => 'CatalogController',
+        'method' => 'categoriesAction'
+    ],
+    'page-categoryby'
+);
+
+
 
 $router->map(
     'GET',

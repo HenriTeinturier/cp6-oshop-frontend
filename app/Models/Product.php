@@ -78,7 +78,7 @@ class Product extends CoreModel{
      *
      * @return Array
      */
-    public function findAllProductByCategory($id)
+    public function findAllProductByCategory($id, $order = "id")
     {
         // Je me connecte à la BDD
         $pdo = Database::getPDO();
@@ -88,8 +88,10 @@ class Product extends CoreModel{
         `product`.*, 
         `type`.`name`  AS `type_name`
         FROM `product`
+
         INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
-        WHERE `category_id`  = " . $id;
+
+        WHERE `category_id`  =" .$id. " ORDER BY ".$order ;
 
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
