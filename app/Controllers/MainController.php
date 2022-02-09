@@ -25,7 +25,7 @@ class MainController extends CoreController {
         // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
         $data = [
             
-            'categorys' => $categorysHome,  // objet category -> getName pour le nom de la categorie
+            'categories' => $categorysHome,  // objet category -> getName pour le nom de la categorie
             
     
         ];
