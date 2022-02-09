@@ -91,7 +91,7 @@ class Product extends CoreModel{
 
         INNER JOIN `type` ON `type`.`id` = `product`.`type_id`
 
-        WHERE `category_id`  =" .$id. " ORDER BY ".$order ;
+        WHERE `category_id`  =" .$id. " ORDER BY ".$order . " LIMIT 12" ;
 
         // Je la transmets à la BDD via PDO
         $pdoStatement = $pdo->query($sql);
