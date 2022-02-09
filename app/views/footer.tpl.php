@@ -127,7 +127,7 @@
       </div>
     </div>
   </footer>
-  <?php dump(get_included_files()); ?>
+ 
   <!-- JS -->
   <script src="<?= $absoluteUrl ?>/assets/js/jquery.min.js"></script>
   <script src="<?= $absoluteUrl ?>/assets/js/popper.min.js"></script>
