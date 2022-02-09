@@ -34,6 +34,7 @@ class MainController extends CoreController {
         $data = [
             
 <<<<<<< HEAD
+<<<<<<< HEAD
             'categories' => $categories,  // objet categories
             
 
@@ -46,6 +47,9 @@ class MainController extends CoreController {
         $this->show('home', $data );
 =======
             'categorys' => $categorysHome,  // objet category -> getName pour le nom de la categorie
+=======
+            'categories' => $categorysHome,  // objet category -> getName pour le nom de la categorie
+>>>>>>> e06-atelier-solo
             
     
         ];
