@@ -14,21 +14,11 @@ class MainController extends CoreController {
      */
     public function homeAction() {
 
-<<<<<<< HEAD
         // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
         // Pour ça on utilise la méthode find du model Category
         $categoryModel = new Category;
         $categories = $categoryModel->findCategoryHome();
 
-=======
-
-
-        // Pour gérer le titre de la page, on a besoin de récupérer la catégorie dont l'ID est dans l'url.
-        // Pour ça on utilise la méthode find du model Category
-        $categoryHomeModel = new Category;
-        $categorysHome = $categoryHomeModel->findCategoryHome();
-    
->>>>>>> e06-atelier-solo
         
         // On récupère l'ID depuis le paramètre de la méthode pour l'envoyer à la vue
         $data = [
