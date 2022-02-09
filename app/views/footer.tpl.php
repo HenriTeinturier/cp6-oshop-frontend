@@ -71,21 +71,17 @@
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Produits</h6>
             <ul class="list-unstyled">
-              <li> <a href="#" class="text-muted">Chaussures de ville</a></li>
-              <li> <a href="#" class="text-muted">Chaussures de sport</a></li>
-              <li> <a href="#" class="text-muted">Pantoufles</a></li>
-              <li> <a href="#" class="text-muted">Tongs</a></li>
-              <li> <a href="#" class="text-muted">Chaussons</a></li>
+              <?php foreach( $footerTypes as $currentType) : ?>
+                <li> <a href="<?= $router->generate('page-type', ['id' => $currentType->getId()]) ?>" class="text-muted"><?= $currentType->getName() ?></a></li>
+              <?php endforeach ?>
             </ul>
           </div>
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
             <h6 class="text-uppercase text-dark mb-3">Marques</h6>
             <ul class="list-unstyled">
-              <li> <a href="#" class="text-muted">oCirage</a></li>
-              <li> <a href="#" class="text-muted">Shossures</a></li>
-              <li> <a href="#" class="text-muted">BOOTstrap</a></li>
-              <li> <a href="#" class="text-muted">Talonette</a></li>
-              <li> <a href="#" class="text-muted">oPompes</a></li>
+              <?php foreach($footerBrands as $currentBrand): ?>
+                <li> <a href="<?= $router->generate('page-brand', ['id' => $currentBrand->getId()]) ?>" class="text-muted"><?= $currentBrand->getName() ?></a></li>
+              <?php endforeach ?>
             </ul>
           </div>
           <div class="col-lg-4">
@@ -131,12 +127,12 @@
       </div>
     </div>
   </footer>
-
+ 
   <!-- JS -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/app.js"></script>
+  <script src="<?= $absoluteUrl ?>/assets/js/jquery.min.js"></script>
+  <script src="<?= $absoluteUrl ?>/assets/js/popper.min.js"></script>
+  <script src="<?= $absoluteUrl ?>/assets/js/bootstrap.min.js"></script>
+  <script src="<?= $absoluteUrl ?>/assets/js/app.js"></script>
 </body>
 
 </html>

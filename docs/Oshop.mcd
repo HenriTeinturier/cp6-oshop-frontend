@@ -1,0 +1,11 @@
+CATEGORY: category_identifier, name, subtitle, picture, home_order
+:
+BRAND: brand_identifier, name, footer_order
+
+is tagged by, 01 PRODUCT, 0N CATEGORY
+PRODUCT: product_identifier, price, name, description, picture, rate, status
+is branded as, 11 PRODUCT, 0N BRAND
+
+TYPE: type_identifier, name, footer_order
+is type of, 11 PRODUCT, 0N TYPE
+:

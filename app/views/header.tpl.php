@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="<?= $absoluteUrl ?>/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= $absoluteUrl ?>/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?= $absoluteUrl ?>/assets/css/styles.css">
   <title>oShop</title>
 </head>
 
@@ -47,22 +47,25 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a href="index.html" class="nav-link active">Home</a>
+              <a href="<?= $router->generate('homepage')  ?>" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Catégories</a>
+              <a href="<?= $router->generate('page-category', ['id' => 5])  ?>" class="nav-link">Catégories</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Types de produit</a>
+              <a href="<?= $router->generate('page-type', ['id' => 5])  ?>" class="nav-link">Types de produit</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Marques</a>
+              <a href="<?= $router->generate('page-brand', ['id' => 5])  ?>" class="nav-link">Marques</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Blog</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= $router->generate('page-product', ['id' => 5])  ?>" class="nav-link">Produit</a>
             </li>
           </ul>
           <div class="d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
