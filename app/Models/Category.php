@@ -90,6 +90,27 @@ class Category extends CoreModel {
     }
 
 
+    public function findCategoryHome()
+    {
+        // Je me connecte à la BDD
+        $pdo = Database::getPDO();
+
+        // Je fais ma requete SQL
+        $sql = "SELECT * FROM `category`
+        WHERE `home_order` > 0
+        ORDER BY `home_order`  ASC
+        LIMIT 5";
+
+        // Je la transmets à la BDD via PDO
+        $pdoStatement = $pdo->query($sql);
+
+        // Je recupère un tableau avec tous les produits
+        // Contrairement à la saison passée, on veut récupérer un tableau avec des objets dedans. Donc on utilise toujours la méthode fetchAll mais cette fois on précise qu'on veut des objets grace au mot-clé PDO::FETCH_CLASS et le nom de la classe concernée.
+        $categorys = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Category::class);
+
+        return $categorys;
+    }
+
     
     /**
      * Get the value of name

@@ -127,7 +127,11 @@
       </div>
     </div>
   </footer>
+<<<<<<< HEAD
  
+=======
+  
+>>>>>>> e06-atelier-solo
   <!-- JS -->
   <script src="<?= $absoluteUrl ?>/assets/js/jquery.min.js"></script>
   <script src="<?= $absoluteUrl ?>/assets/js/popper.min.js"></script>

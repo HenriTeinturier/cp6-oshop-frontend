@@ -26,7 +26,11 @@ class CatalogController extends CoreController {
         // Pour gérer les infos de chaque produit, on a besoin de récupérer les produits de la categorie dont l'ID est dans l'url.
         // Pour ça on utilise la méthode findAllProductByCategory du model Product
         $productModel = new Product;
-        $products = $productModel->findAllProductByCategory($params['id']);
+        if (isset($params['order'])) {
+            $products = $productModel->findAllProductByCategory($params['id'], $params['order'] );
+        } else {
+            $products = $productModel->findAllProductByCategory($params['id']);
+        }
 
 
 
