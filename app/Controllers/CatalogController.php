@@ -45,6 +45,7 @@ class CatalogController extends CoreController {
         $this->show('categories', $data);
     }
 
+   
     /**
      * Méthode affichant des produits filtrés par type
      *
