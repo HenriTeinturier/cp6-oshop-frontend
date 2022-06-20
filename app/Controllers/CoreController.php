@@ -6,7 +6,7 @@ use App\Models\Type;
 use App\Models\Brand;
 
 // Cette classe sert de base aux autres controllers. Tous les controllers de ce projet étendent cette classe afin d'hériter de ses méthodes/propriétés.
-class CoreController {
+abstract class CoreController {
 
     /**
      * Fonction qui se charge d'afficher une page donnée
