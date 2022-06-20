@@ -24,7 +24,7 @@ class Category extends CoreModel {
      */
     public function find($id)
     {
-        // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD.
+        // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD en prenant en compte nos DNS, USERNAME, PASSWORD, NOM BDD  dans notre config.ini
         $pdo = Database::getPDO();
             
         // Je fais ma requete SQL
@@ -92,7 +92,7 @@ class Category extends CoreModel {
 
     public function findCategoryHome()
     {
-        // Je me connecte à la BDD
+        // On se connecte à la BDD à l'aide de notre nouvel outil Database. Celui-ci nous renvoie une instance de PDO connectée à la BDD en prenant en compte nos DNS, USERNAME, PASSWORD, NOM BDD  dans notre config.ini
         $pdo = Database::getPDO();
 
         // Je fais ma requete SQL

@@ -4,7 +4,7 @@ namespace App\Models;
 
 
 // Le CoreModel est un model qui sert à stocker les propriétés et méthodes communes à tous les models.
-class CoreModel {
+abstract class CoreModel {
 
     // On déclare les propriétés que possèdent tous les models
     protected $id;

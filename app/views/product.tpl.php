@@ -43,15 +43,13 @@
             <div class="text-muted">by <em><?= $brandName ?></em></div>
             <div>
               <?php  $productRate = $product->getRate();
-              for ($etoile = 1; $etoile < 6; $etoile++):  
-                if ($etoile <= $productRate):?>
-                    <i class="fa fa-star"></i>
-                <?php else: ?>
-                  <i class="fa fa-star-o"></i>
-              
-              
+                for ($etoile = 1; $etoile <= 5; $etoile++):  
 
-              <?php endif ?>
+                  if ($etoile <= $productRate):?>
+                      <i class="fa fa-star"></i>
+                  <?php else: ?>
+                      <i class="fa fa-star-o"></i>
+                  <?php endif ?>
                 <?php endfor ?>
               
             </div>

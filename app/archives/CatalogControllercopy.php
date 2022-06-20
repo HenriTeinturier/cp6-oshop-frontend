@@ -9,12 +9,7 @@ use App\Models\Brand;
 
 class CatalogController extends CoreController {
 
-    /**
-     * Méthode gérant l'affichage de la page listant les produits par catégorie
-     *
-     * @param array $params contient les paramètres de l'url
-     * @return void
-     */
+    // $params contient
     public function categoriesAction($params)
     {
 
@@ -45,7 +40,6 @@ class CatalogController extends CoreController {
         $this->show('categories', $data);
     }
 
-   
     /**
      * Méthode affichant des produits filtrés par type
      *

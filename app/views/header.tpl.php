@@ -50,10 +50,10 @@
               <a href="<?= $router->generate('homepage')  ?>" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
-              <a href="<?= $router->generate('page-category', ['id' => 5])  ?>" class="nav-link">Catégories</a>
+              <a href="<?= $router->generate('page-category', ['id' => 1])  ?>" class="nav-link">Catégories</a>
             </li>
             <li class="nav-item">
-              <a href="<?= $router->generate('page-type', ['id' => 5])  ?>" class="nav-link">Types de produit</a>
+              <a href="<?= $router->generate('page-type', ['id' => 2])  ?>" class="nav-link">Types de produit</a>
             </li>
             <li class="nav-item">
               <a href="<?= $router->generate('page-brand', ['id' => 5])  ?>" class="nav-link">Marques</a>
